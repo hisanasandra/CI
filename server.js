@@ -51,7 +51,7 @@ app.get("/collection/:collectionName/:id", (req, res, next) => {
     res.send(result);
   });
 });
-
+// getting images and error if not found - static file middleware
 app.get("/images/:file", function (req, res, next) {
   let file = req.params.file;
   var filePath = path.join(__dirname, "public/images/", file);
@@ -65,7 +65,7 @@ app.get("/images/:file", function (req, res, next) {
     }
   });
 });
-
+//update
 app.put("/collection/:collectionName/:id", (req, res, next) => {
   req.collection.update(
     { _id: new ObjectID(req.params.id) },
@@ -77,7 +77,7 @@ app.put("/collection/:collectionName/:id", (req, res, next) => {
     }
   );
 });
-
+//searching for classes
 app.post("/collection/:collectionName/search", (req, res, next) => {
   const data = req.body.search;
   req.collection
